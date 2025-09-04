@@ -1,0 +1,68 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if a user is an admin
+    function isAdmin() {
+      return request.auth.token.role == 'admin' || request.auth.token.role == 'super_admin';
+    }
+    
+    // Rules for the 'users' collection
+    match /users/{userId} {
+      allow read: if request.auth != null && 
+                     (request.auth.uid == userId || // User can read their own data
+                      (request.auth.token.role == 'doctor' && resource.data.doctorId == request.auth.uid) || // Doctor can read their patient's data
+                      isAdmin()); // Admins can read all user data
+      
+      allow list: if request.auth != null && (request.auth.token.role == 'doctor' || isAdmin()); // Allow doctors and admins to list users
+      allow create: if request.auth.uid == userId; // User can create their own profile document
+      
+      allow update: if request.auth != null &&
+                       (request.auth.uid == userId || isAdmin()); // User can update their own profile, or admin can
+    }
+    
+    // HIPAA-Compliant rules for 'recommendation_requests'
+    match /recommendation_requests/{requestId} {
+      allow read, list: if request.auth != null && 
+                       ((request.auth.token.role == 'doctor' && resource.data.doctorId == request.auth.uid) || // Doctor can read their own patient's requests
+                        request.auth.uid == resource.data.userId || // Patient can read their own
+                        isAdmin()); // Admins can read all
+                       
+      allow create: if request.auth != null; // Any authenticated user can create a request
+      allow update: if request.auth != null && request.auth.token.role == 'doctor'; // Only doctors can update
+    }
+    
+    // Rules for 'resources'
+    match /resources/{resourceId} {
+      allow read, list: if request.auth != null; // Any authenticated user can read resources
+      allow create, update, delete: if request.auth != null && request.auth.token.role == 'doctor'; // Only doctors can manage resources
+    }
+    
+    // Rules for 'notifications'
+    match /notifications/{notificationId} {
+      allow read, list: if request.auth != null && request.auth.token.role == 'doctor' && resource.data.doctorId == request.auth.uid; // Doctor can read their own notifications
+      allow update: if request.auth != null && request.auth.token.role == 'doctor' && resource.data.doctorId == request.auth.uid;
+      allow create: if request.auth != null; // System can create notifications
+    }
+    
+    // Rules for 'audit_logs'
+    match /audit_logs/{logId} {
+      allow read, list: if request.auth != null && 
+                     (isAdmin() || // Admins can read all logs
+                      (request.auth.token.role == 'doctor' && resource.data.actorId == request.auth.uid) || // Doctor can read their own actions
+                      (resource.data.targetId == request.auth.uid)); // User can see logs where they are the target
+                      
+      allow create: if request.auth != null; // Any authenticated user action can create a log
+    }
+    
+    // Rules for 'invoices' (billing)
+    match /invoices/{invoiceId} {
+      allow read, list: if request.auth != null && request.auth.token.role == 'doctor' && resource.data.doctorId == request.auth.uid;
+    }
+    
+    // Rules for diagnostic writes
+    match /diagnostics/{docId} {
+      allow write: if isAdmin();
+    }
+  }
+}

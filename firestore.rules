@@ -1,0 +1,102 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isUser(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isRole(role) {
+      return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    function isSuperAdmin() {
+      return isRole('super_admin');
+    }
+    
+    function isAdmin() {
+      return isRole('admin') || isSuperAdmin();
+    }
+
+    function isDoctor() {
+      return isRole('doctor');
+    }
+
+    function isPatientOf(doctorId) {
+        let userDoc = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+        return userDoc.doctorId == doctorId;
+    }
+
+    function isMyPatient(patientId) {
+        let patientDoc = get(/databases/$(database)/documents/users/$(patientId)).data;
+        return patientDoc.doctorId == request.auth.uid;
+    }
+
+    // `users` collection rules
+    match /users/{userId} {
+      // Any signed-in user can read any other user's profile (for linking doctor/patient)
+      allow read: if isSignedIn();
+      // A user can create their own profile
+      allow create: if isUser(userId);
+      // A user can update their own profile, or an admin can update any profile
+      allow update: if isUser(userId) || isAdmin();
+      // Only admins can delete users
+      allow delete: if isAdmin();
+    }
+
+    // `assessments` collection rules
+    match /assessments/{assessmentId} {
+      // Patients create their own assessments. Doctors can't create them directly.
+      allow create: if isUser(request.resource.data.userId);
+      // Read access for the patient who owns it, their linked doctor, or an admin
+      allow read: if isUser(resource.data.userId) || (isDoctor() && isMyPatient(resource.data.userId)) || isAdmin();
+      // Only admins should be able to update/delete raw assessment data
+      allow update, delete: if isAdmin();
+    }
+    
+    // `resources` collection rules
+    match /resources/{resourceId} {
+        // Doctors create their own resources
+        allow create: if isDoctor() && request.resource.data.doctorId == request.auth.uid;
+        // Read access for the doctor who owns it, their patients, or an admin
+        allow read: if (isDoctor() && resource.data.doctorId == request.auth.uid) || isPatientOf(resource.data.doctorId) || isAdmin();
+        // Update/delete for the doctor who owns it or an admin
+        allow update, delete: if (isDoctor() && resource.data.doctorId == request.auth.uid) || isAdmin();
+    }
+    
+    // `notifications` collection rules
+    match /notifications/{notificationId} {
+        // Notifications are created by the system (server-side actions)
+        allow create: if false; // Deny client-side creation
+        // Only the doctor receiving the notification or an admin can read/update it
+        allow read, update: if (isDoctor() && resource.data.doctorId == request.auth.uid) || isAdmin();
+        allow delete: if isAdmin();
+    }
+
+    // Admin-only collections
+    match /audit_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /invoices/{invoiceId} {
+        allow read, write: if isAdmin();
+    }
+    
+    match /platform_settings/{settingId} {
+        allow read, write: if isAdmin();
+    }
+    
+     // Diagnostics collection for testing
+    match /diagnostics/{docId} {
+      allow read, write: if isSuperAdmin();
+    }
+
+  }
+}

@@ -1,0 +1,48 @@
+# Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+# The ID of the App Hosting backend, which must be the same as your Firebase project ID.
+serviceId: mindful-assessment-platform
+runConfig:
+  cpu: 2
+  memoryMiB: 1024
+availability: public-unauthenticated
+env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: ${env:NEXT_PUBLIC_FIREBASE_API_KEY}
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: ${env:NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: ${env:NEXT_PUBLIC_FIREBASE_PROJECT_ID}
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: ${env:NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: ${env:NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID}
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: ${env:NEXT_PUBLIC_FIREBASE_APP_ID}
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: ${env:NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID}
+  - variable: SMTP_HOST
+    value: mail.clicksearchsolutions.com
+  - variable: SMTP_PORT
+    value: '465'
+  - variable: SMTP_USER
+    value: reports@clicksearchsolutions.com
+  - variable: SMTP_PASSWORD
+    value: 2P0bTAZvGaIij37UytIwsxW2HdVE5tYn
+  - variable: FROM_EMAIL
+    value: reports@clicksearchsolutions.com
+  - variable: SERVICE_ACCOUNT_CLIENT_EMAIL
+    value: ${env:SERVICE_ACCOUNT_CLIENT_EMAIL}
+  - variable: SERVICE_ACCOUNT_PRIVATE_KEY
+    value: ${env:SERVICE_ACCOUNT_PRIVATE_KEY}
+  - variable: NEXT_PUBLIC_APP_URL
+    value: ${env:NEXT_PUBLIC_APP_URL}
+
+# Specifies the build and start commands for your Next.js application.
+# This ensures Firebase App Hosting uses the correct build process.
+bundle:
+  build:
+    run: npm run build
+  start:
+    run: npm start
