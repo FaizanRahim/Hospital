@@ -1,7 +1,8 @@
 
 'use server';
 
-import { getAdminDb } from '@/lib/firebase/admin';
+import { getAdminDb } from '../../lib/firebase/admin';
+
 
 export interface DoctorDashboardStats {
     activePatients: number;

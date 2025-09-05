@@ -1,9 +1,8 @@
-
 'use client';
 
 import * as React from 'react';
-import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarToggle } from '@/components/ui/sidebar';
-import { useUserProfile } from '@/context/user-profile-context';
+import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarToggle } from "../../components/ui/sidebar";
+import { useUserProfile } from '../../context/user-profile-context';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -23,17 +22,16 @@ import {
 } from 'lucide-react';
 import { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
-import { AddPatientDialog } from '@/components/add-patient-dialog';
-import { Button } from '@/components/ui/button';
+import {Skeleton} from "../../components/ui/skeleton";
+import { AddPatientDialog } from '../../components/add-patient-dialog';
+import {Button} from "../../components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { ActionCallbackProvider, useActionCallback } from '@/context/action-callback-context';
-
+} from "../../components/ui/tooltip";
+import { ActionCallbackProvider, useActionCallback } from '../../context/action-callback-context';
 
 // -------------------- Sidebar Skeleton --------------------
 function SidebarSkeleton() {
@@ -119,7 +117,7 @@ function PatientSidebar() {
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                     <Link href="/dashboard/resources">
-                        <SidebarMenuButton icon={<FileText />} label="Resources" isActive={pathname === '/dashboard/resources'} />
+                        <SidebarMenuButton icon={<FileText />} label="Resources" />
                     </Link>
                 </SidebarMenuItem>
             </SidebarMenu>
@@ -211,7 +209,6 @@ function FloatingAddPatientButton() {
     const pathname = usePathname();
     const { callback: onSuccess } = useActionCallback();
 
-    // Only show this button for doctors on the my-patients page.
     if (userProfile?.role !== 'doctor' || !pathname.startsWith('/dashboard/my-patients')) {
         return null;
     }

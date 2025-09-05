@@ -20,9 +20,10 @@ import {
   DialogDescription,
   DialogTrigger,
 } from '../components/ui/dialog';
-import { AssessmentDetails } from './assessment-details';
+import { AssessmentDetails } from '../components/assessment-details';
 import { ScrollArea } from '../components/ui/scroll-area';
 import { type Assessment } from '../lib/firebase/firestore-types';
+ 
 
 
 function StatCard({ title, value, isLoading, icon: Icon, description }: { title: string; value: string | number; isLoading: boolean; icon?: React.ElementType, description?: string }) {
