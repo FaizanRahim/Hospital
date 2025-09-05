@@ -3,13 +3,13 @@
 
 import { useEffect, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { useUserProfile } from '@/context/user-profile-context';
-import { addResource, type ResourceActionState } from '@/lib/actions/resource-actions';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { useUserProfile } from '../context/user-profile-context';
+import { addResource, type ResourceActionState } from '../lib/actions/resource-actions';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 import { Loader2, PlusCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,7 @@ import {
   DialogFooter,
   DialogClose,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from './ui/dialog';
 import { Textarea } from './ui/textarea';
 import {
   Select,
@@ -27,7 +27,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '../components/ui/select';
 
 function SubmitButton() {
   const { pending } = useFormStatus();

@@ -3,10 +3,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button } from '../components/ui/button';
 import { ArrowRight, Bot, ClipboardCheck, ShieldCheck, UserCheck, Stethoscope } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { getPlatformLogo } from '@/lib/actions/settings-actions';
+import { getPlatformLogo } from '../lib/actions/settings-actions';
+
 
 const features = [
   {

@@ -4,14 +4,15 @@
 import { useEffect, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { doc, getDoc, type DocumentData } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { useUserProfile } from '@/context/user-profile-context';
-import { linkDoctor, type LinkDoctorActionState } from '@/lib/actions/user-actions';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { db } from '../lib/firebase';
+import { useUserProfile } from '../context/user-profile-context';
+import { linkDoctor, type LinkDoctorActionState } from '../lib/actions/user-actions';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
 import { Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
+
 
 function SubmitButton() {
   const { pending } = useFormStatus();

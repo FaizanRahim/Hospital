@@ -7,8 +7,8 @@ import {
   ChartContainer,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+} from "../components/ui/chart";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
 
 const chartConfig = {
   phq9: {
@@ -20,6 +20,7 @@ const chartConfig = {
     color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig;
+
 
 export function AssessmentChart({ assessments }: { assessments: any[] }) {
   const chartData = [...assessments]

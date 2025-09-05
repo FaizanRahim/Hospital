@@ -2,8 +2,8 @@
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import { savePlatformLogo, getPlatformLogo, type PlatformSettingsActionState } from '@/lib/actions/settings-actions';
-import { Button } from '@/components/ui/button';
+import { savePlatformLogo, getPlatformLogo, type PlatformSettingsActionState } from '../lib/actions/settings-actions';
+import { Button } from '../components/ui/button';
 import {
   Card,
   CardContent,
@@ -11,10 +11,10 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
+} from './ui/card';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { useToast } from '../hooks/use-toast';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2, Image as ImageIcon } from 'lucide-react';

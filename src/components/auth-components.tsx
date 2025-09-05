@@ -1,11 +1,10 @@
 
 'use client';
-
 import { type ReactNode } from 'react';
 import Link from 'next/link';
 import { signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
-import { Button } from '@/components/ui/button';
+import { auth } from '../lib/firebase';
+import { Button } from '../components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +12,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+} from '../components/ui/dropdown-menu';
+import { Avatar, AvatarFallback } from '../components/ui/avatar';
 import { Loader2 } from 'lucide-react';
-import { useUserProfile } from '@/context/user-profile-context';
+import { useUserProfile } from '../context/user-profile-context';
 import { useRouter } from 'next/navigation';
+
 
 function LogoutButton() {
   const router = useRouter();

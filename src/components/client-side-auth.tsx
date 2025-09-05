@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useUserProfile } from '@/context/user-profile-context';
+import { useUserProfile } from '../context/user-profile-context';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { Loader2 } from 'lucide-react';

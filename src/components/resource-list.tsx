@@ -4,10 +4,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { Card } from '@/components/ui/card';
+} from './ui/accordion';
+import { Card } from './ui/card';
 import { ResourceDisplayCard } from './resource-display-card';
-import type { ResourceRecommendationsOutput } from '@/lib/actions';
+import type { ResourceRecommendationsOutput } from '../lib/actions';
 import { HeartPulse, HeartHandshake, MessageSquare, HelpCircle } from 'lucide-react';
 
 const categoryIcons: { [key: string]: React.ElementType } = {

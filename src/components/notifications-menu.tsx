@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from 'react';
 import { collection, query, where, onSnapshot, orderBy, updateDoc, doc } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { useUserProfile } from '@/context/user-profile-context';
-import { Button } from '@/components/ui/button';
+import { db } from '../lib/firebase';
+import { useUserProfile } from '../context/user-profile-context';
+import { Button } from '../components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,11 +13,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '../components/ui/dropdown-menu';
 import { Bell } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';
-import { type Notification } from '@/lib/firebase/firestore-types';
+import { type Notification } from '../lib/firebase/firestore-types';
+
 
 export function NotificationsMenu() {
   const { user, userProfile } = useUserProfile();

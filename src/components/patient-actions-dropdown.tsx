@@ -4,19 +4,19 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useFormState, useFormStatus } from 'react-dom';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
+import { Button } from './ui/button';
 import { MoreHorizontal, Send, Clock, Eye, Mail, Trash2, Loader2 } from 'lucide-react';
-import { sendAssessmentToPatient, resendInviteToPatient, type SendAssessmentActionState } from '@/lib/actions/user-actions';
-import { useToast } from '@/hooks/use-toast';
+import { sendAssessmentToPatient, resendInviteToPatient, type SendAssessmentActionState } from '../lib/actions/user-actions';
+import { useToast } from '../hooks/use-toast';
 import { DeletePatientDialog } from './delete-patient-dialog';
-import { useUserProfile } from '@/context/user-profile-context';
+import { useUserProfile } from '../context/user-profile-context';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+    DropdownMenuSeparator,
+} from './ui/dropdown-menu';
 
 function SendAssessmentFormItem({ patient, onSent }: { patient: any; onSent: () => void }) {
   const { toast } = useToast();

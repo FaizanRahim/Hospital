@@ -2,13 +2,13 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { getDoctorDashboardStats, type DoctorDashboardStats } from '@/lib/actions/doctor-actions';
+import { getDoctorDashboardStats, type DoctorDashboardStats } from '../lib/actions/doctor-actions';
 import { collection, query, where, getDocs, orderBy, limit, type DocumentData } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { useUserProfile } from '@/context/user-profile-context';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
+import { db } from '../lib/firebase';
+import { useUserProfile } from '../context/user-profile-context';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
+import { Button } from '../components/ui/button';
 import Link from 'next/link';
 import { Eye, Loader2, Users, ClipboardList, CheckCircle, NotebookText } from 'lucide-react';
 import { format } from 'date-fns';
@@ -19,10 +19,11 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '../components/ui/dialog';
 import { AssessmentDetails } from './assessment-details';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { ScrollArea } from '../components/ui/scroll-area';
+import { type Assessment } from '../lib/firebase/firestore-types';
+
 
 function StatCard({ title, value, isLoading, icon: Icon, description }: { title: string; value: string | number; isLoading: boolean; icon?: React.ElementType, description?: string }) {
     return (

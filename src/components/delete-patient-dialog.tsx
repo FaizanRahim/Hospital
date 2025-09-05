@@ -1,13 +1,12 @@
 
 'use client';
-
 import { useEffect, useState, type ReactNode } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { deletePatient, type DeletePatientActionState } from '@/lib/actions/user-actions';
-import { Button } from '@/components/ui/button';
+import { deletePatient, type DeletePatientActionState } from '../lib/actions/user-actions';
+import { Button } from '../components/ui/button';
 import { Loader2, Trash2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { useUserProfile } from '@/context/user-profile-context';
+import { useToast } from '../hooks/use-toast';
+import { useUserProfile } from '../context/user-profile-context';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +17,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+} from '../components/ui/alert-dialog';
+
 
 function SubmitButton() {
     const { pending } = useFormStatus();

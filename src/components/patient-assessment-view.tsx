@@ -3,15 +3,15 @@
 
 import type { User } from 'firebase/auth';
 import type { DocumentData } from 'firebase/firestore';
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from './ui/card';
+import { Button } from './ui/button';
 import { AssessmentHistory } from './assessment-history';
 import Link from 'next/link';
 import { ArrowRight, Loader2 } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
 import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { db } from '../lib/firebase';
+import { type Assessment } from '../lib/firebase/firestore-types';
 
 
 export function PatientAssessmentView({ user, userProfile }: { user: User, userProfile: DocumentData }) {

@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth } from '../lib/firebase';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 import { Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast'; // ✅ Custom hook for toast
+import { useToast } from '../hooks/use-toast'; // ✅ Custom hook for toast
 
 // Submit button component with loading spinner
 function SubmitButton() {

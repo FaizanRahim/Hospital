@@ -3,10 +3,10 @@
 
 import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
-import { deleteResource, type ResourceActionState } from '@/lib/actions/resource-actions';
-import { Button } from '@/components/ui/button';
+import { deleteResource, type ResourceActionState } from '../lib/actions/resource-actions';
+import { Button } from '../components/ui/button';
 import { Loader2, Trash2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,7 +17,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+} from '../components/ui/alert-dialog';
+
 
 export function DeleteResourceDialog({
   resourceId,

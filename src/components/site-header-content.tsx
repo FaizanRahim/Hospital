@@ -4,7 +4,7 @@
 import { AuthButton } from './auth-components';
 import { NotificationsMenu } from './notifications-menu';
 import { useMemo } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
+import { useUserProfile } from '../context/user-profile-context';
 
 export function SiteHeaderContent() {
   const { user } = useUserProfile();

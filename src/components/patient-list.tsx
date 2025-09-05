@@ -26,12 +26,12 @@ import {
   CardDescription,
 } from '../components/ui/card';
 import { Loader2, UserPlus } from 'lucide-react';
-import { useUserProfile } from '@/context/user-profile-context';
 import { AddPatientDialog } from './add-patient-dialog';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 import { PatientActionsDropdown } from './patient-actions-dropdown';
+import { useUserProfile } from '../context/user-profile-context';
 
 interface Patient extends DocumentData {
   id: string;

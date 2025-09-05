@@ -1,11 +1,11 @@
 
 'use client';
 
-import { phq9Questions, gad7Questions } from '@/lib/assessment-questions';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { phq9Questions, gad7Questions } from '../lib/assessment-questions';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Separator } from '../components/ui/separator';
+import { Badge } from '../components/ui/badge';
+import { type Assessment } from '../lib/firebase/firestore-types';
 import { AddNoteDialog } from './assessment-history';
 
 const getScoreVariant = (value: number): 'score_0' | 'score_1' | 'score_2' | 'score_3' => {

@@ -10,9 +10,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Pencil, NotebookPen, Mail } from 'lucide-react';
+} from '../components/ui/table';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../components/ui/card';
+import { Pencil, NotebookPen, Mail, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { Badge } from './ui/badge';
 import {
@@ -24,15 +24,15 @@ import {
   DialogFooter,
   DialogClose,
   DialogTrigger,
-} from '@/components/ui/dialog';
+} from '../components/ui/dialog';
 import { Button } from './ui/button';
-import { addOrUpdateDoctorNote, emailAssessmentResults } from '@/lib/actions';
-import { Loader2 } from 'lucide-react';
+import { addOrUpdateDoctorNote, emailAssessmentResults } from '../lib/actions';
 import { Textarea } from './ui/textarea';
 import { AssessmentDetails } from './assessment-details';
-import { useToast } from '@/hooks/use-toast';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { useToast } from '../hooks/use-toast';
+import { ScrollArea } from '../components/ui/scroll-area';
+import { type Assessment } from '../lib/firebase/firestore-types';
+
 
 function getSeverity(score: number, type: 'phq9' | 'gad7'): string {
     if (type === 'phq9') {

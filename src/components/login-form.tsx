@@ -4,14 +4,15 @@
 import { useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth } from '../lib/firebase';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
 import { Loader2 } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { toast } from '../hooks/use-toast';
 import Link from 'next/link';
+
 
 function SubmitButton() {
   const { pending } = useFormStatus();

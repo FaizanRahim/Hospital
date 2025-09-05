@@ -5,10 +5,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+} from './ui/card';
+import { Button } from './ui/button';
 import { ArrowUpRight } from 'lucide-react';
-import type { Resource } from '@/lib/actions/resource-actions';
+import type { Resource } from '../lib/actions/resource-actions';
 
 interface ResourceDisplayCardProps {
     // Can accept a full resource or a partial for display-only purposes

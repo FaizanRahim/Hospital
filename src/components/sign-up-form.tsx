@@ -5,18 +5,18 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFormStatus } from 'react-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
-import { createUserProfile } from '@/lib/actions/user-actions';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
+import { auth } from '../lib/firebase';
+import { createUserProfile } from '../lib/actions/user-actions';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Card, CardContent } from './ui/card';
 import { Loader2, User, Briefcase } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { toast } from '../hooks/use-toast';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 import Image from 'next/image';
-import { getPlatformLogo } from '@/lib/actions/settings-actions';
+import { getPlatformLogo } from '../lib/actions/settings-actions';
 
 function SubmitButton() {
   const { pending } = useFormStatus();

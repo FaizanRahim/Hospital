@@ -4,7 +4,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useFormState } from 'react-dom';
 import { collection, getDocs, type DocumentData, type QueryDocumentSnapshot } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { db } from '../lib/firebase';
 import {
   Table,
   TableBody,
@@ -12,14 +12,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from './ui/table';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription
-} from '@/components/ui/card';
+} from './ui/card';
 import { Loader2 } from 'lucide-react';
 import { Badge } from './ui/badge';
 import {
@@ -29,9 +29,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from './ui/select';
-import { updateUserRole } from '@/lib/actions/user-actions';
-import { useToast } from '@/hooks/use-toast';
-import { useUserProfile } from '@/context/user-profile-context';
+import { updateUserRole } from '../lib/actions/user-actions';
+import { useToast } from '../hooks/use-toast';
+import { useUserProfile } from '../context/user-profile-context';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -41,7 +41,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
+} from './ui/alert-dialog';
 import { Button } from './ui/button';
 
 

@@ -2,11 +2,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getAdminBillingData, type AdminBillingData } from '@/lib/actions/admin-billing-actions';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { getAdminBillingData, type AdminBillingData } from '../lib/actions/admin-billing-actions';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
 import { Loader2, Users, User, DollarSign, Activity } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '../components/ui/badge';
+
 
 function StatCard({ title, value, isLoading, icon: Icon, description }: { title: string; value: string | number; isLoading: boolean; icon?: React.ElementType, description?: string }) {
     return (

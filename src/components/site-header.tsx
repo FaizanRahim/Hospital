@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { SiteHeaderContent } from './site-header-content';
 import Image from 'next/image';
 import { SidebarTrigger } from './ui/sidebar';
-import { useUserProfile } from '@/context/user-profile-context';
+import { useUserProfile } from '../context/user-profile-context';
 import { Button } from './ui/button';
 import { usePathname } from 'next/navigation';
 
