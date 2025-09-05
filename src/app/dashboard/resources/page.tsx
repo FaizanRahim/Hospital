@@ -2,11 +2,12 @@
 'use client';
 
 import { useEffect, useState, useCallback, Suspense } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
-import { getResourcesForPatient, type Resource } from '@/lib/actions/resource-actions';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { getResourcesForPatient, type Resource } from '../../../lib/actions/resource-actions';
 import { Loader2 } from 'lucide-react';
-import { ResourceCard } from '@/components/resource-card';
-import { ResourceCardSkeleton } from '@/components/resource-card-skeleton';
+import { ResourceCard } from '../../../components/resource-card';
+import { ResourceCardSkeleton } from '../../../components/resource-card-skeleton';
+
 
 function ResourcesContent() {
   const { user, loading: profileLoading } = useUserProfile();

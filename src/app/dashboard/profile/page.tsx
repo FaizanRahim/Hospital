@@ -1,9 +1,9 @@
 
 'use client';
 
-import { useUserProfile } from '@/context/user-profile-context';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { UpdateProfileForm } from '@/components/ui/update-profile-form';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
+import { UpdateProfileForm } from '../../../components/ui/update-profile-form';
 import { Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
 

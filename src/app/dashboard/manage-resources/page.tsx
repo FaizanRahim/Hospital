@@ -2,16 +2,16 @@
 'use client';
 
 import { useEffect, useState, useCallback, Suspense } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
-import { getResourcesByDoctor, type Resource } from '@/lib/actions/resource-actions';
-import { Button } from '@/components/ui/button';
-import { PlusCircle, Loader2 } from 'lucide-react';
-import { ResourceCard } from '@/components/resource-card';
-import { ResourceCardSkeleton } from '@/components/resource-card-skeleton';
-import { AddResourceDialog } from '@/components/add-resource-dialog';
-import { EditResourceDialog } from '@/components/edit-resource-dialog';
-import { DeleteResourceDialog } from '@/components/delete-resource-dialog';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { getResourcesByDoctor, type Resource } from '../../../lib/actions/resource-actions';
+import {  Loader2 } from 'lucide-react';
+import { ResourceCard } from '../../../components/resource-card';
+import { ResourceCardSkeleton } from '../../../components/resource-card-skeleton';
+import { AddResourceDialog } from '../../../components/add-resource-dialog';
+import { EditResourceDialog } from '../../../components/edit-resource-dialog';
+import { DeleteResourceDialog } from '../../../components/delete-resource-dialog';
 import { redirect } from 'next/navigation';
+
 
 function ManageResourcesContent() {
   const { user, userProfile, loading: profileLoading } = useUserProfile();
