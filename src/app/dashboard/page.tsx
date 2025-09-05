@@ -2,10 +2,10 @@
 'use client';
 
 import { Suspense } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
-import { DoctorDashboard } from '@/components/doctor-dashboard';
-import { PatientAssessmentView } from '@/components/patient-assessment-view';
-import { AdminDashboard } from '@/components/admin-dashboard';
+import { useUserProfile } from '../../context/user-profile-context';
+import { DoctorDashboard } from '../../components/doctor-dashboard';
+import { PatientAssessmentView } from '../../components/patient-assessment-view';
+import { AdminDashboard } from '../../components/admin-dashboard';
 import { Loader2 } from 'lucide-react';
 
 function DashboardContent() {
@@ -41,5 +41,5 @@ export default function DashboardPage() {
         <Suspense fallback={<div className="flex h-screen w-full items-center justify-center"><Loader2 className="h-8 w-8 animate-spin" /></div>}>
             <DashboardContent />
         </Suspense>
- ,   )
+    );
 }

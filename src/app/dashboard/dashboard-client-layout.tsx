@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarToggle } from "../../components/ui/sidebar";
 import { useUserProfile } from '../../context/user-profile-context';
 import Link from 'next/link';
@@ -32,7 +33,7 @@ import {
   TooltipTrigger,
 } from "../../components/ui/tooltip";
 import { ActionCallbackProvider, useActionCallback } from '../../context/action-callback-context';
-
+import {DialogTrigger} from "../../components/ui/dialog";
 // -------------------- Sidebar Skeleton --------------------
 function SidebarSkeleton() {
     return (
@@ -205,6 +206,14 @@ function DynamicSidebar() {
 
 // -------------------- Floating Add Patient Button --------------------
 function FloatingAddPatientButton() {
+     const { setCallback } = useActionCallback();
+      const [refreshCallback, setRefreshCallback] = useState<(() => void) | null>(null);
+     useEffect(() => {
+        if (refreshCallback) {
+          setCallback(() => refreshCallback);
+        }
+        return () => setCallback(null);
+      }, [refreshCallback, setCallback]);
     const { userProfile } = useUserProfile();
     const pathname = usePathname();
     const { callback: onSuccess } = useActionCallback();
@@ -215,20 +224,26 @@ function FloatingAddPatientButton() {
 
     return (
         <div className="fixed bottom-6 right-6 z-50">
-            <AddPatientDialog onSuccess={onSuccess || undefined}>
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button className="h-14 w-14 rounded-full shadow-lg" aria-label="Add New Patient">
-                                <UserPlus className="h-6 w-6" />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent side="left">
-                            <p>Add New Patient</p>
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
-            </AddPatientDialog>
+           <AddPatientDialog onSuccess={() => refreshCallback?.()}>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger>
+        <DialogTrigger asChild>
+          <Button
+            className="h-14 w-14 rounded-full shadow-lg"
+            aria-label="Add New Patient"
+          >
+            <UserPlus className="h-6 w-6" />
+          </Button>
+        </DialogTrigger>
+      </TooltipTrigger>
+      <TooltipContent side="left">
+        <p>Add New Patient</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</AddPatientDialog>
+
         </div>
     );
 }

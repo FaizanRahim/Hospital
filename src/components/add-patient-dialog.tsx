@@ -79,7 +79,7 @@ export function AddPatientDialog({
       <DialogTrigger asChild>
         {children || (
           <Button>
-            <PlusCircle className="mr-2 h-4 w-4" /> Add Patient
+             Add Patient
           </Button>
         )}
       </DialogTrigger>
