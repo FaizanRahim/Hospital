@@ -1,12 +1,12 @@
 
 'use client';
 
-import { useUserProfile } from '@/context/user-profile-context';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { LinkDoctorForm } from '@/components/link-doctor-form';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../../components/ui/card';
+import { Avatar, AvatarFallback } from '../../../components/ui/avatar';
+import { LinkDoctorForm } from '../../../components/link-doctor-form';
 import { Loader2 } from 'lucide-react';
-import { getDoctorProfileById } from '@/lib/actions/user-actions';
+import { getDoctorProfileById } from '../../../lib/actions/user-actions';
 import { useEffect, useState, useCallback, Suspense } from 'react';
 
 type DoctorProfile = {

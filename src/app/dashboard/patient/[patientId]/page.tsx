@@ -1,17 +1,17 @@
 'use client';
 
-import { getPatientDetailsForDoctor } from '@/lib/actions/user-actions';
-import { useUserProfile } from '@/context/user-profile-context';
-import { AssessmentHistory } from '@/components/assessment-history';
-import { AssessmentChart } from '@/components/assessment-chart';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { getPatientDetailsForDoctor } from '../../../../lib/actions/user-actions';
+import { useUserProfile } from '../../../../context/user-profile-context';
+import { AssessmentHistory } from '../../../../components/assessment-history';
+import { AssessmentChart } from '../../../../components/assessment-chart';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../../components/ui/card';
+import { Avatar, AvatarFallback } from '../../../../components/ui/avatar';
 import { format } from 'date-fns';
-import { logViewedPatientHistory } from '@/lib/actions/user-actions';
+import { logViewedPatientHistory } from '../../../../lib/actions/user-actions';
 import { notFound, redirect } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
 import { Loader2 } from 'lucide-react';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { type Assessment } from '../../../../lib/firebase/firestore-types';
 import type { DocumentData } from 'firebase-admin/firestore';
 
 export default function PatientPage({ params }: { params: { patientId: string } }) {

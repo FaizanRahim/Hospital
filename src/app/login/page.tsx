@@ -2,7 +2,7 @@
 'use client';
 
 import { Suspense } from 'react';
-import { LoginForm } from '@/components/login-form';
+import { LoginForm } from '../../components/login-form';
 import { Loader2 } from 'lucide-react';
 
 function LoginPageContent() {

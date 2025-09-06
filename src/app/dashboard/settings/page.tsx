@@ -1,8 +1,8 @@
 
 'use client';
 
-import { PlatformSettingsForm } from '@/components/platform-settings-form';
-import { useUserProfile } from '@/context/user-profile-context';
+import { PlatformSettingsForm } from '../../../components/platform-settings-form';
+import { useUserProfile } from '../../../context/user-profile-context';
 import { Loader2 } from 'lucide-react';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';

@@ -1,23 +1,26 @@
 
 'use client';
 
-import React, { useEffect, useReducer, Suspense } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useUserProfile } from '@/context/user-profile-context';
-import { phq9Questions, gad7Questions } from '@/lib/assessment-questions';
-import { submitAndGetRecommendations, type ResourceRecommendationsOutput } from '@/lib/actions';
+import React, { useEffect, useReducer, Suspense } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Loader2, CheckCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { ResourceList } from '@/components/resource-list';
-import { ResourceCardSkeleton } from '@/components/resource-card-skeleton';
+import { useUserProfile } from "../../../context/user-profile-context";
+import { phq9Questions, gad7Questions } from "../../../lib/assessment-questions";
+import { submitAndGetRecommendations, type ResourceRecommendationsOutput } from "../../../lib/actions";
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "../../../components/ui/card";
+import { Button } from "../../../components/ui/button";
+import { Progress } from "../../../components/ui/progress";
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
+import { Label } from "../../../components/ui/label";
+import { Textarea } from "../../../components/ui/textarea";
+import { Loader2, CheckCircle } from "lucide-react";
+
+import { useToast } from "../../../hooks/use-toast";
+import { ResourceList } from "../../../components/resource-list";
+import { ResourceCardSkeleton } from "../../../components/resource-card-skeleton";
+
 
 const allQuestions = [
   ...phq9Questions.map(q => ({ ...q, type: 'phq9' })),

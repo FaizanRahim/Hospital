@@ -2,7 +2,7 @@
 'use client';
 
 import { Suspense } from 'react';
-import { UserManagement } from '@/components/user-management';
+import { UserManagement } from '../../../components/user-management';
 import { Loader2 } from 'lucide-react';
 
 function AdminPageImpl() {
