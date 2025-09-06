@@ -2,15 +2,15 @@
 'use client';
 
 import { useEffect, useState, useCallback, useTransition, Suspense } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
-import { getAuditLogs, type AuditLog } from '@/lib/actions/audit-log-actions';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { getAuditLogs, type AuditLog } from '../../../lib/actions/audit-log-actions';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
+import { Input } from '../../../components/ui/input';
+import { Button } from '../../../components/ui/button';
 import { Loader2, Search } from 'lucide-react';
 import { format } from 'date-fns';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '../../../components/ui/badge';
 import { redirect } from 'next/navigation';
 
 

@@ -2,14 +2,14 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useUserProfile } from '@/context/user-profile-context';
-import { getBillingData, type BillingData, type Doctor } from '@/lib/actions/billing-actions';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { getBillingData, type BillingData, type Doctor } from '../../../lib/actions/billing-actions';
 import { Loader2 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
+import { Badge } from '../../../components/ui/badge';
 import { format } from 'date-fns';
-import { Combobox } from '@/components/ui/combobox';
+import { Combobox } from '../../../components/ui/combobox';
 
 function BillingStats({ stats }: { stats: BillingData['stats'] }) {
   if (!stats.currentPlan) return null; // Don't render if stats are for admin view

@@ -4,18 +4,18 @@
 import { useEffect, useState, useCallback, Suspense } from 'react';
 import Link from 'next/link';
 import { collection, query, where, getDocs, doc, getDoc, type DocumentData, Timestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
-import { useUserProfile } from '@/context/user-profile-context';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { db } from '../../../lib/firebase';
+import { useUserProfile } from '../../../context/user-profile-context';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
 import { Loader2, Eye, NotebookText } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Badge } from '../../../components/ui/badge';
+import { Button } from '../../../components/ui/button';
 import { format } from 'date-fns';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { AssessmentDetails } from '@/components/assessment-details';
-import { type Assessment } from '@/lib/firebase/firestore-types';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../../../components/ui/dialog';
+import { ScrollArea } from '../../../components/ui/scroll-area';
+import { AssessmentDetails } from '../../../components/assessment-details';
+import { type Assessment } from "../../../lib/firebase/firestore-types"
 
 interface CompletedAssessment extends DocumentData {
   id: string; 

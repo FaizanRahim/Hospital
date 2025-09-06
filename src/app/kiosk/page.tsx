@@ -2,7 +2,7 @@
 'use client';
 
 import { Suspense } from 'react';
-import { AddPatientDialog } from '@/components/add-patient-dialog';
+import { AddPatientDialog } from '../../components/add-patient-dialog';
 import { Loader2 } from 'lucide-react';
 
 function KioskContent() {
