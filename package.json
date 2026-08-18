@@ -42,7 +42,6 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
-    "firebase": "^12.1.0",
     "framer-motion": "^12.23.12",
     "genkit": "^1.15.5",
     "google-auth-library": "^9.11.0",
